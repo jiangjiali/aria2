@@ -1,17 +1,17 @@
 name: android
 
 on:
-  push:
-    paths:
-    - Dockerfile.android
-  schedule:
-  - cron: '30 1 * * *'
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'tag name'
+        required: true
 
 permissions: read-all
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
